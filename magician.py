@@ -26,7 +26,7 @@ class Spell:
 	pass
 
 # TODO: Déclarer la classe Magician qui étend la classe Character
-class Magician:
+class Magician(Character):
 	"""
 	Un utilisateur de magie dans le jeu. Un magicien peut utiliser des sorts, mais peut aussi utiliser des armes physiques. Sa capacité à utiliser des sorts dépend 
 
@@ -43,8 +43,14 @@ class Magician:
 
 	def __init__(self, name, max_hp, max_mp, attack, magic_attack, defense, level):
 		# TODO: Initialiser les attributs de Character
+		super().__init__(name, max_hp, attack, defense, level)
+
 		# TODO: Initialiser le `magic_attack` avec le paramètre, le `max_mp` et `mp` de la même façon que `max_hp` et `hp`, `spell` à None et `using_magic` à False.
-		pass
+		self.max_mp = max_mp
+		self.mp = max_mp
+		self.magic_attack = magic_attack
+		self.spell = None
+		self.using_magic = False
 
 	@property
 	def mp(self):
@@ -57,6 +63,7 @@ class Magician:
 	# TODO: Écrire les getter/setter pour la propriété `spell`.
 	#       On peut affecter None.
 	#       Si le niveau minimal d'un sort est supérieur au niveau du personnage, on lève ValueError.
+
 
 	# TODO: Surcharger la méthode `compute_damage` 
 	def compute_damage(self, other):
@@ -82,5 +89,6 @@ class Magician:
 
 	def _compute_physical_damage(self, other):
 		# TODO: Calculer le dommage physique exactement de la même façon que dans `Character`
+		return super().compute_damage(self, other)
 		pass
 
